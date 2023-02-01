@@ -1,0 +1,30 @@
+U
+    ‡b  ã                   @   s:   d Z ddlZddlZddlmZ dd„ Zedkr6eƒ  dS )a$  
+.. module:: user_interface
+   :platform: Unix
+   :synopsis: Python module for the user Interface
+.. moduleauthor:: SAMIUR RAHMAN
+
+This node implements an user interface and the user will be able to start/stop using the user interface in terminal
+
+Service:
+   /user_interface
+   
+é    N)ÚCommandc                  C   s~   t  d¡ t  dt¡} t d¡ t  d¡}ttdƒƒ}t  	¡ sz|dkr\| dƒ ttdƒƒ}q6t
+d	ƒ | d
+ƒ ttdƒƒ}q6dS )a.  
+    This function initializes the ROS node and waits for the user to
+    insert *start* or *stop* to control the robot, by relying on the
+    `rospy <http://wiki.ros.org/rospy/>`_ module.
+    
+    The user message is passed to the service``user_interface``,
+    advertised by :mod:`go_to_point`.
+
+    Zuser_interfacez/user_interfaceé
+   é   z
+Press 1 to start the robot é   Ústartz
+Press 0 to stop the robot zIPlease wait, the robot is going to stop when the position will be reachedÚstopN)ÚrospyZ	init_nodeZServiceProxyr   ÚtimeÚsleepZRateÚintÚinputZis_shutdownÚprint)Z	ui_clientZrateÚx© r   ú:/root/my_ros/src/rt2_assignment1/scripts/user_interface.pyÚmain   s    
+
+
+
+r   Ú__main__)Ú__doc__r   r	   Zrt2_assignment1.srvr   r   Ú__name__r   r   r   r   Ú<module>   s   

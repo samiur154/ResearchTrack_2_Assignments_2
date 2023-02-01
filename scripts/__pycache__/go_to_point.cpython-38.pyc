@@ -1,0 +1,144 @@
+U
+    a‡b‰  ã                   @   sô   d Z ddlZddlmZmZ ddlmZ ddlmZ ddl	Z	ddl
+Z
+ddlZ
+ddlZeƒ adadadadadae	jd Ze	jd ZdZd	Zd
+ZdZdZdZdd„ Zdd„ Zdd„ Zdd„ Zdd„ Z dd„ Z!dd„ Z"dd„ Z#dd„ Z$e%dkrğe$ƒ  dS ) ab   
+..module: go_to_point
+    :platform:Unix
+    :synopsis: This file contain the description of go_to_point node to control robot
+    :moduleauthor: SAMIUR RAHMAN
+    	
+Publisher:
+    \cmd_vel
+    
+Subscriber:
+    \odom
+    
+Action Server: <BR>
+    \go_to_point
+    
+This node define the movememnt of the robot using the go_to_point algorithm
+
+é    N)ÚTwistÚPoint)ÚOdometry)Útransformationsé	   éZ   gš™™™™™¹?g      Àgš™™™™™É?g333333ã?g      à¿c                 C   sL   | j j ja| j j jj| j j jj| j j jj| j j jjf}t 	|¡}|d a
+dS )z­
+    
+    Service callback of the odometry subscriber
+    Recieves (x,y,z and theta) from the Odom message.
+    Args:
+        msg (Odometry): odometry message.
+        
+    é   N)ZposeÚpositionÚ	position_ZorientationÚxÚyÚzÚwr   Zeuler_from_quaternionÚyaw_)ÚmsgZ
+quaternionZeuler© r   ú7/root/my_ros/src/rt2_assignment1/scripts/go_to_point.pyÚ	clbk_odom6   s    
+
+
+
+
+ü
+r   c                 C   s   | a tdt  ƒ dS )z
+    
+    Function to specify the state value
+    
+    Update the current global state
+    
+    Args: 
+        state (int):  new state
+    
+    zState changed to [%s]N)Ústate_Úprint)Ústater   r   r   Úchange_stateN   s    r   c                 C   s0   t  | ¡t jkr,| dt j |  t  | ¡  } | S )zh
+    
+    Function to normalize an angle
+    
+    Args: angle (float):  angle to be normalized
+    
+    r   )ÚmathÚfabsÚpi)Úangler   r   r   Únormalize_angle]   s    r   c                 C   s–   t  | jtj | jtj ¡}t|t ƒ}tƒ }t  |¡t	krrt
+| |j_|jjtkr^t|j_n|jjtk rrt|j_t |¡ t  |¡t	kr’tdƒ dS )z“
+    
+    Orient the robot in a desired way
+    
+    Args:  des_yaw (float):  desired yaw
+        next_state (int): next state to set
+        
+    é   N)r   Úatan2r   r
+   r   r   r   r   r   Úyaw_precision_2_Úkp_aÚangularr   Úub_aÚlb_aÚpub_Úpublishr   )Údes_posÚdesired_yawÚerr_yawÚ	twist_msgr   r   r   Úfix_yawi   s    	
+
+r*   c                 C   s¾   t  | jtj | jtj ¡}|t }t  t| jtj dƒt| jtj dƒ ¡}t|t ƒ}|t	krœt
+ƒ }d|j_|jjtkr„t|j_t| |j_t |¡ ntdƒ t  |¡tkrºtdƒ dS )zĞ
+    
+    Move straignt to the target
+     Set the linear and angular velocity
+     depending on the distance to the 
+     goal pose.
+ 
+     Args:
+       des_pos (Point):  desired (x, y) position
+       
+    r   g333333Ó?r   N)r   r   r   r
+   r   r   ÚsqrtÚpowr   Údist_precision_r   ÚlinearÚub_dr    r!   r   r$   r%   r   r   Úyaw_precision_)r&   r'   r(   Zerr_posr)   r   r   r   Úgo_straight_ahead€   s     ÿr1   c                 C   s„   t | t ƒ}t |¡ tƒ }t |¡tkr`t| |j	_
+|j	j
+tkrLt|j	_
+n|j	j
+tk r`t|j	_
+t |¡ t |¡tkr€tdƒ dS )z
+    
+     Turns the robot to reach
+     the final desired yaw
+     Args:
+       des_yaw (Point):  desired final yaw
+       
+    é   N)r   r   ÚrospyÚloginfor   r   r   r   r    r!   r   r"   r#   r$   r%   r   )Údes_yawr(   r)   r   r   r   Úfix_final_yaw¡   s    	
+
+
+r6   c                  C   s$   t ƒ } d| j_d| j_t | ¡ dS )z]
+    
+    Stop the robot
+    
+    Args: 
+      None
+    Set the robot velocities to 0.
+ 
+    r   N)r   r.   r   r!   r   r$   r%   )r)   r   r   r   Údone¸   s    
+r7   c                 C   sÊ   t ƒ a| jt_| jt_| j}dad}tj ¡ }tj 	¡ }t
+ ¡ sÆt ¡ rht
+ d¡ t ¡  tƒ  d}qÆq8tdkrzttƒ q8tdkrŒttƒ q8tdkrt|ƒ q8tdkrºtƒ  t |¡ qÆq8t
+ d¡ q8d	S )
+a<  
+    
+    Set the appropriate behaviour depending
+    on the current robot state, in orderd
+    to reach the goal.
+    The state machine keeps running until
+    the goal is reached or the action is
+    preempted (the goal gets cancelled).
+    
+    Args:
+      goal (PoseActionGoal): (x,y,theta) goal pose
+      
+    r   TzGoal was preemptedFr   r   r2   zUnknown state!N)r   Zdesired_positionr   r   Úthetar   Úrt2_assignment1r   ZPlanningFeedbackZPlanningResultr3   Úis_shutdownÚact_sZis_preempt_requestedr4   Zset_preemptedr7   r*   r1   r6   Zset_succeededÚlogerr)Úgoalr5   ÚsuccessZfeedbackÚresultr   r   r   ÚplanningÈ   s4    
+
+
+
+
+
+
+r@   c                  C   sf   t  d¡ t jdtddat  dtt¡} tj	dt
+jjtddat ¡  t  d	¡}t  ¡ sb| ¡  qPd
+S )zü
+    
+    Main function to manage 
+    the robot behaviour
+    
+    Including :
+	- the initialization of the *go_to_point*  node
+	- the publisher for the "\cmd_vel" topic
+	- the subscriber to the "\odom" topic
+	- the action server *\go_to_point*
+	
+    Zgo_to_pointz/cmd_velr   )Ú
+queue_sizez/odomz/go_to_pointF)Z
+auto_starté   N)r3   Ú	init_nodeÚ	Publisherr   r$   Ú
+Subscriberr   r   Ú	actionlibZSimpleActionServerr9   r   ZPlanningActionr@   r;   ÚstartÚRater:   Úsleep)Zsub_odomÚrater   r   r   Úmainü   s    
+   ÿ
+rK   Ú__main__)&Ú__doc__r3   Zgeometry_msgs.msgr   r   Znav_msgs.msgr   Útfr   r   rF   Zactionlib.msgZrt2_assignment1.msgr9   r
+   r   r   r$   r;   r   r0   r   r-   r    Zkp_dr"   r#   r/   r   r   r   r*   r1   r6   r7   r@   rK   Ú__name__r   r   r   r   Ú<module>   sB   
+
+!4
