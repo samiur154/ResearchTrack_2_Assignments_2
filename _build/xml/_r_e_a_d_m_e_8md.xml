@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="_r_e_a_d_m_e_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>RT2_Assignment2</highlight></codeline>
+<codeline><highlight class="normal">##<sp/>Jupyter<sp/>notebook<sp/>package:</highlight></codeline>
+<codeline><highlight class="normal">This<sp/>package<sp/>includes<sp/>Jupyter<sp/>Notebooks,<sp/>which<sp/>act<sp/>as<sp/>a<sp/>user<sp/>interface<sp/>node<sp/>and<sp/>assist<sp/>in<sp/>controlling<sp/>the<sp/>robot<sp/>in<sp/>the<sp/>gazebo<sp/>environment.<sp/>This<sp/>node<sp/>will<sp/>have<sp/>a<sp/>graphical<sp/>interface<sp/>with<sp/>a<sp/>Jupyter<sp/>notebook<sp/>for<sp/>starting<sp/>and<sp/>stopping<sp/>the<sp/>robot,<sp/>controlling<sp/>the<sp/>robot<sp/>in<sp/>the<sp/>desired<sp/>direction,<sp/>and<sp/>also<sp/>analyzing<sp/>various<sp/>plots.<sp/>In<sp/>the<sp/>action<sp/>package,<sp/>the<sp/>user<sp/>interface<sp/>is<sp/>simply<sp/>a<sp/>command<sp/>line<sp/>interface<sp/>through<sp/>which<sp/>the<sp/>user<sp/>can<sp/>&quot;start&quot;<sp/>or<sp/>&quot;stop&quot;<sp/>the<sp/>robot.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Jupyter<sp/>Notebook<sp/>desription:</highlight></codeline>
+<codeline><highlight class="normal">Plots,<sp/>buttons<sp/>is<sp/>for<sp/>controlling<sp/>the<sp/>robot,<sp/>and<sp/>displays<sp/>for<sp/>various<sp/>analysis<sp/>data<sp/>on<sp/>the<sp/>robot&apos;s<sp/>state<sp/>are<sp/>all<sp/>included<sp/>in<sp/>the<sp/>Jupyter<sp/>Notebook.<sp/>The<sp/>buttons<sp/>and<sp/>plots<sp/>that<sp/>this<sp/>node<sp/>can<sp/>offer<sp/>are<sp/>listed<sp/>below.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Start,Stop,foreward,backward,left,right<sp/>buttons:</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>robot<sp/>may<sp/>be<sp/>manually<sp/>started<sp/>and<sp/>stopped<sp/>with<sp/>this<sp/>button,<sp/>and<sp/>it<sp/>can<sp/>also<sp/>be<sp/>moved<sp/>in<sp/>any<sp/>direction<sp/>using<sp/>the<sp/>forward,<sp/>backward,<sp/>left,<sp/>and<sp/>right<sp/>buttons.<sp/>These<sp/>buttons<sp/>provide<sp/>as<sp/>a<sp/>means<sp/>of<sp/>requesting<sp/>customer<sp/>service.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">![but_jupy](https://user-images.githubusercontent.com/80621864/154955314-6963db8c-23d2-49e4-811a-2452e962a76c.jpg)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Robot&apos;s<sp/>moving<sp/>position<sp/>in<sp/>real<sp/>time:</highlight></codeline>
+<codeline><highlight class="normal">it<sp/>is<sp/>a<sp/>live<sp/>plot<sp/>that<sp/>displays<sp/>the<sp/>robot&apos;s<sp/>condition<sp/>in<sp/>real<sp/>time.<sp/>It<sp/>is<sp/>an<sp/>x,<sp/>y<sp/>plot<sp/>that<sp/>is<sp/>used<sp/>to<sp/>indicate<sp/>the<sp/>robot&apos;s<sp/>position<sp/>as<sp/>well<sp/>as<sp/>the<sp/>direction<sp/>it<sp/>is<sp/>travelling<sp/>in<sp/>the<sp/>gazebo<sp/>environment.<sp/>Robot<sp/>motion<sp/>will<sp/>be<sp/>shown<sp/>by<sp/>a<sp/>black<sp/>line<sp/>that<sp/>looks<sp/>like<sp/>a<sp/>diamond.</highlight></codeline>
+<codeline><highlight class="normal">![map_jupy](https://user-images.githubusercontent.com/80621864/154955780-9474e2e9-7205-48a8-a9d6-31f4c7c4ab6a.jpg)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Velocity<sp/>visualization<sp/>plot:</highlight></codeline>
+<codeline><highlight class="normal">This<sp/>figure<sp/>makes<sp/>it<sp/>easier<sp/>to<sp/>see<sp/>how<sp/>the<sp/>**cmd_vel**<sp/>compares<sp/>to<sp/>the<sp/>**odom(actual<sp/>velocity)**.<sp/>Both<sp/>in<sp/>linear<sp/>and<sp/>angular<sp/>positions,<sp/>it<sp/>is<sp/>visible.<sp/><sp/>against<sp/>the<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">![Screenshot<sp/>2022-02-21<sp/>114438](https://user-images.githubusercontent.com/80621864/154956187-c5c24725-6045-499d-8544-8cb020882c2d.jpg)<sp/>![Screenshot<sp/>2022-02-21<sp/>114414](https://user-images.githubusercontent.com/80621864/154957806-3044a32b-0ba2-490a-8863-b9f7fdbf1c4c.jpg)<sp/>![Screenshot<sp/>2022-02-21<sp/>114343](https://user-images.githubusercontent.com/80621864/154956251-a9522580-93a5-4e4a-8cb1-444f4b790fdc.jpg)<sp/>![vel_jupy](https://user-images.githubusercontent.com/80621864/154956271-f240dbb2-2922-44da-ba1d-ef6c77697306.jpg)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Bar<sp/>plot:</highlight></codeline>
+<codeline><highlight class="normal">Bar<sp/>plot<sp/>is<sp/>used<sp/>for<sp/>showing<sp/>the<sp/>number<sp/>of<sp/>target<sp/>reached<sp/>and<sp/>the<sp/>number<sp/>of<sp/>target<sp/>that<sp/>as<sp/>cancelled<sp/>by<sp/>the<sp/>user.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">![bar_tar](https://user-images.githubusercontent.com/80621864/154956539-3706afeb-484f-4db5-8399-a2c252391a55.jpg)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Histogram<sp/>plot:</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>histogram<sp/>plot<sp/>shows<sp/>the<sp/>time<sp/>taken<sp/>to<sp/>reach<sp/>the<sp/>target<sp/>by<sp/>the<sp/>robot<sp/>wn<sp/>it<sp/>is<sp/>reached<sp/>the<sp/>goal.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">![time_jupy](https://user-images.githubusercontent.com/80621864/154956810-0b0ae5db-65ec-4cbd-af07-1082146131b8.jpg)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Running<sp/>the<sp/>package:</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>In<sp/>the<sp/>first<sp/>tab:</highlight></codeline>
+<codeline><highlight class="normal">run<sp/>the<sp/>command<sp/>below<sp/>to<sp/>launch<sp/>the<sp/>simulation<sp/>and<sp/>all<sp/>the<sp/>required<sp/>nodes.</highlight></codeline>
+<codeline><highlight class="normal">```roslaunch<sp/>rt2_assignment2<sp/>sim.launch```</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>In<sp/>the<sp/>second<sp/>tab:</highlight></codeline>
+<codeline><highlight class="normal">run<sp/>the<sp/>command<sp/>to<sp/>open<sp/>jupyter<sp/>notebook.</highlight></codeline>
+<codeline><highlight class="normal">```jupyter<sp/>notebook<sp/>--allow-root```</highlight></codeline>
+<codeline><highlight class="normal">and<sp/>open<sp/>the<sp/>notebook<sp/>named<sp/>as<sp/>**jupyter_505150.ipynb**<sp/>.</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+    </programlisting>
+    <location file="README.md"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,43 @@
+.TH "md__r_e_a_d_m_e" 3 "Tue Jan 31 2023" "Version 1.0" "GUI for Robot Control using JupyterNotebook" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+md__r_e_a_d_m_e \- RT2_Assignment2 
+
+.SH "Jupyter notebook package:"
+.PP
+This package includes Jupyter Notebooks, which act as a user interface node and assist in controlling the robot in the gazebo environment\&. This node will have a graphical interface with a Jupyter notebook for starting and stopping the robot, controlling the robot in the desired direction, and also analyzing various plots\&. In the action package, the user interface is simply a command line interface through which the user can 'start' or 'stop' the robot\&.
+.SH "Jupyter Notebook desription:"
+.PP
+Plots, buttons is for controlling the robot, and displays for various analysis data on the robot's state are all included in the Jupyter Notebook\&. The buttons and plots that this node can offer are listed below\&.
+.SS "Start,Stop,foreward,backward,left,right buttons:"
+The robot may be manually started and stopped with this button, and it can also be moved in any direction using the forward, backward, left, and right buttons\&. These buttons provide as a means of requesting customer service\&.
+.PP
+.SS "Robot's moving position in real time:"
+it is a live plot that displays the robot's condition in real time\&. It is an x, y plot that is used to indicate the robot's position as well as the direction it is travelling in the gazebo environment\&. Robot motion will be shown by a black line that looks like a diamond\&. 
+.SS "Velocity visualization plot:"
+This figure makes it easier to see how the \fBcmd_vel\fP compares to the \fBodom(actual velocity)\fP\&. Both in linear and angular positions, it is visible\&. against the
+.PP
+   
+.SS "Bar plot:"
+Bar plot is used for showing the number of target reached and the number of target that as cancelled by the user\&.
+.PP
+.SS "Histogram plot:"
+The histogram plot shows the time taken to reach the target by the robot wn it is reached the goal\&.
+.PP
+.SH "Running the package:"
+.PP
+.IP "\(bu" 2
+In the first tab: run the command below to launch the simulation and all the required nodes\&. 
+.PP
+.nf
+- In the second tab:
+run the command to open jupyter notebook\&.
+```jupyter notebook --allow-roo
+
+.fi
+.PP
+
+.PP
+.PP
+and open the notebook named as \fBjupyter_505150\&.ipynb\fP \&. 

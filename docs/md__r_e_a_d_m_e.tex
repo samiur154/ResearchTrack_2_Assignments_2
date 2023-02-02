@@ -1,0 +1,28 @@
+\hypertarget{md__r_e_a_d_m_e_autotoc_md1}{}\doxysection{Jupyter notebook package\+:}\label{md__r_e_a_d_m_e_autotoc_md1}
+This package includes Jupyter Notebooks, which act as a user interface node and assist in controlling the robot in the gazebo environment. This node will have a graphical interface with a Jupyter notebook for starting and stopping the robot, controlling the robot in the desired direction, and also analyzing various plots. In the action package, the user interface is simply a command line interface through which the user can \char`\"{}start\char`\"{} or \char`\"{}stop\char`\"{} the robot.\hypertarget{md__r_e_a_d_m_e_autotoc_md2}{}\doxysection{Jupyter Notebook desription\+:}\label{md__r_e_a_d_m_e_autotoc_md2}
+Plots, buttons is for controlling the robot, and displays for various analysis data on the robot\textquotesingle{}s state are all included in the Jupyter Notebook. The buttons and plots that this node can offer are listed below.\hypertarget{md__r_e_a_d_m_e_autotoc_md3}{}\doxysubsection{Start,\+Stop,foreward,backward,left,right buttons\+:}\label{md__r_e_a_d_m_e_autotoc_md3}
+The robot may be manually started and stopped with this button, and it can also be moved in any direction using the forward, backward, left, and right buttons. These buttons provide as a means of requesting customer service.
+
+\hypertarget{md__r_e_a_d_m_e_autotoc_md4}{}\doxysubsection{Robot\textquotesingle{}s moving position in real time\+:}\label{md__r_e_a_d_m_e_autotoc_md4}
+it is a live plot that displays the robot\textquotesingle{}s condition in real time. It is an x, y plot that is used to indicate the robot\textquotesingle{}s position as well as the direction it is travelling in the gazebo environment. Robot motion will be shown by a black line that looks like a diamond. \hypertarget{md__r_e_a_d_m_e_autotoc_md5}{}\doxysubsection{Velocity visualization plot\+:}\label{md__r_e_a_d_m_e_autotoc_md5}
+This figure makes it easier to see how the {\bfseries{cmd\+\_\+vel}} compares to the {\bfseries{odom(actual velocity)}}. Both in linear and angular positions, it is visible. against the
+
+   \hypertarget{md__r_e_a_d_m_e_autotoc_md6}{}\doxysubsection{Bar plot\+:}\label{md__r_e_a_d_m_e_autotoc_md6}
+Bar plot is used for showing the number of target reached and the number of target that as cancelled by the user.
+
+\hypertarget{md__r_e_a_d_m_e_autotoc_md7}{}\doxysubsection{Histogram plot\+:}\label{md__r_e_a_d_m_e_autotoc_md7}
+The histogram plot shows the time taken to reach the target by the robot wn it is reached the goal.
+
+\hypertarget{md__r_e_a_d_m_e_autotoc_md8}{}\doxysection{Running the package\+:}\label{md__r_e_a_d_m_e_autotoc_md8}
+
+\begin{DoxyItemize}
+\item In the first tab\+: run the command below to launch the simulation and all the required nodes. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/ In the second tab:}
+\DoxyCodeLine{run the command to open jupyter notebook.}
+\DoxyCodeLine{```jupyter notebook -\/-\/allow-\/roo}
+\end{DoxyCode}
+
+\end{DoxyItemize}
+
+and open the notebook named as {\bfseries{jupyter\+\_\+505150.\+ipynb}} . 

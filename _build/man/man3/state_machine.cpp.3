@@ -1,0 +1,136 @@
+.TH "src/state_machine.cpp" 3 "Tue Jan 31 2023" "Version 1.0" "GUI for Robot Control using JupyterNotebook" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src/state_machine.cpp \- This files defines a finite state machine for controlling the robot in the Gazebo environment\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'ros/ros\&.h'\fP
+.br
+\fC#include 'rt2_assignment1/Command\&.h'\fP
+.br
+\fC#include 'rt2_assignment1/RandomPosition\&.h'\fP
+.br
+\fC#include 'rt2_assignment1/PlanningAction\&.h'\fP
+.br
+\fC#include 'actionlib/client/simple_action_client\&.h'\fP
+.br
+\fC#include 'actionlib/client/terminal_state\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBuser_interface\fP (rt2_assignment1::Command::Request &req, rt2_assignment1::Command::Response &res)"
+.br
+.RI "Function implemented to get the user's command\&. "
+.ti -1c
+.RI "int \fBmain\fP (int argc, char **argv)"
+.br
+.RI "Main function of the node\&. "
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "bool \fBstart\fP = false"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This files defines a finite state machine for controlling the robot in the Gazebo environment\&. 
+
+
+.PP
+\fBAuthor\fP
+.RS 4
+SAMIUR RAHMAN 
+.RE
+.PP
+\fBVersion\fP
+.RS 4
+1\&.0 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+29/07/2022
+.RE
+.PP
+Services : 
+.br
+ /user_interface
+.PP
+Clients : /position_server
+.PP
+Action Client : /go_to_point
+.PP
+Description :
+.PP
+This node implements the state machine for the input to be provided by the user to control the holonomic robot\&. It includes:
+.IP "\(bu" 2
+An Action client 'go_to_point' that interacts with the action 'Planning' to:
+.IP "  \(bu" 4
+set a new goal randomly when the user presses 1 to start
+.IP "  \(bu" 4
+check if the goal has been reached by the robot
+.IP "  \(bu" 4
+check if the goal has been cancelled,when the user presses 0 to stop the robot
+.IP "  \(bu" 4
+Define the new state
+.PP
+
+.IP "\(bu" 2
+A Service server that advertise the command line user interface
+.IP "\(bu" 2
+A Service client that requires a new target postion from the /position_server 
+.PP
+
+.SH "Function Documentation"
+.PP 
+.SS "int main (int argc, char ** argv)"
+
+.PP
+Main function of the node\&. int main(argc, argv)
+.PP
+\fBParameters\fP
+.RS 4
+\fIargc\fP the number of argument passed as parameters
+.br
+\fIargv\fP the vector of string containing each argument
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+0 when the program ends
+.RE
+.PP
+description: The main function, define all the initializations as follows:
+.PP
+client_rp: it is used for getting a random goal at custom service RandomPosition goal_position: the random goal generated as a Position Goal and send it to /go_to_point node service: it is read the command which is sent by the user from the Command service custom message
+.PP
+After initializations it generates a request for the random position in interval [-5, 5], then executes an infinite loop in which it gets the random position and sends it as a goal position to the /go_to_point node and waits untill the target is reached\&. In case in which the command from /user_interface is 'stop' (so start==false) so that the goal is cancelled and the robot is stopped, otherwise the loop is executed again\&. 
+.SS "bool user_interface (rt2_assignment1::Command::Request & req, rt2_assignment1::Command::Response & res)"
+
+.PP
+Function implemented to get the user's command\&. bool user_interface(req, res)
+.PP
+\fBParameters\fP
+.RS 4
+\fIreq\fP request done by the client (start or stop the robot)
+.br
+\fIres\fP respondse generated from the server
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+true if the server finishes to set the 'start' variable on the basis of the command received
+.RE
+.PP
+description: This callback checks if the command from the /user_interface node is 'start', in this case sets to true the correspective variable, otherwise sets it to false 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for GUI for Robot Control using JupyterNotebook from the source code\&.

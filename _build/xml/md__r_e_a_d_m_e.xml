@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="md__r_e_a_d_m_e" kind="page">
+    <compoundname>md_README</compoundname>
+    <title>RT2_Assignment2</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<sect1 id="md__r_e_a_d_m_e_1autotoc_md1">
+<title>Jupyter notebook package:</title>
+<para>This package includes Jupyter Notebooks, which act as a user interface node and assist in controlling the robot in the gazebo environment. This node will have a graphical interface with a Jupyter notebook for starting and stopping the robot, controlling the robot in the desired direction, and also analyzing various plots. In the action package, the user interface is simply a command line interface through which the user can &quot;start&quot; or &quot;stop&quot; the robot.</para>
+</sect1>
+<sect1 id="md__r_e_a_d_m_e_1autotoc_md2">
+<title>Jupyter Notebook desription:</title>
+<para>Plots, buttons is for controlling the robot, and displays for various analysis data on the robot&apos;s state are all included in the Jupyter Notebook. The buttons and plots that this node can offer are listed below.</para>
+<sect2 id="md__r_e_a_d_m_e_1autotoc_md3">
+<title>Start,Stop,foreward,backward,left,right buttons:</title>
+<para>The robot may be manually started and stopped with this button, and it can also be moved in any direction using the forward, backward, left, and right buttons. These buttons provide as a means of requesting customer service.</para>
+<para><image type="html" name="154955314-6963db8c-23d2-49e4-811a-2452e962a76c.jpg" inline="yes"></image>
+</para>
+</sect2>
+<sect2 id="md__r_e_a_d_m_e_1autotoc_md4">
+<title>Robot&apos;s moving position in real time:</title>
+<para>it is a live plot that displays the robot&apos;s condition in real time. It is an x, y plot that is used to indicate the robot&apos;s position as well as the direction it is travelling in the gazebo environment. Robot motion will be shown by a black line that looks like a diamond. <image type="html" name="154955780-9474e2e9-7205-48a8-a9d6-31f4c7c4ab6a.jpg" inline="yes"></image>
+</para>
+</sect2>
+<sect2 id="md__r_e_a_d_m_e_1autotoc_md5">
+<title>Velocity visualization plot:</title>
+<para>This figure makes it easier to see how the <bold>cmd_vel</bold> compares to the <bold>odom(actual velocity)</bold>. Both in linear and angular positions, it is visible. against the</para>
+<para><image type="html" name="154956187-c5c24725-6045-499d-8544-8cb020882c2d.jpg" inline="yes"></image>
+ <image type="html" name="154957806-3044a32b-0ba2-490a-8863-b9f7fdbf1c4c.jpg" inline="yes"></image>
+ <image type="html" name="154956251-a9522580-93a5-4e4a-8cb1-444f4b790fdc.jpg" inline="yes"></image>
+ <image type="html" name="154956271-f240dbb2-2922-44da-ba1d-ef6c77697306.jpg" inline="yes"></image>
+</para>
+</sect2>
+<sect2 id="md__r_e_a_d_m_e_1autotoc_md6">
+<title>Bar plot:</title>
+<para>Bar plot is used for showing the number of target reached and the number of target that as cancelled by the user.</para>
+<para><image type="html" name="154956539-3706afeb-484f-4db5-8399-a2c252391a55.jpg" inline="yes"></image>
+</para>
+</sect2>
+<sect2 id="md__r_e_a_d_m_e_1autotoc_md7">
+<title>Histogram plot:</title>
+<para>The histogram plot shows the time taken to reach the target by the robot wn it is reached the goal.</para>
+<para><image type="html" name="154956810-0b0ae5db-65ec-4cbd-af07-1082146131b8.jpg" inline="yes"></image>
+</para>
+</sect2>
+</sect1>
+<sect1 id="md__r_e_a_d_m_e_1autotoc_md8">
+<title>Running the package:</title>
+<para><itemizedlist>
+<listitem><para>In the first tab: run the command below to launch the simulation and all the required nodes. <programlisting filename=".roslaunch"><codeline><highlight class="normal">-<sp/>In<sp/>the<sp/>second<sp/>tab:</highlight></codeline>
+<codeline><highlight class="normal">run<sp/>the<sp/>command<sp/>to<sp/>open<sp/>jupyter<sp/>notebook.</highlight></codeline>
+<codeline><highlight class="normal">```jupyter<sp/>notebook<sp/>--allow-roo</highlight></codeline>
+</programlisting></para>
+</listitem></itemizedlist>
+</para>
+<para>and open the notebook named as <bold>jupyter_505150.ipynb</bold> . </para>
+</sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

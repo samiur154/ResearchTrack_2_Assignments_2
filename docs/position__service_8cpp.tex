@@ -1,0 +1,116 @@
+\hypertarget{position__service_8cpp}{}\doxysection{src/position\+\_\+service.cpp File Reference}
+\label{position__service_8cpp}\index{src/position\_service.cpp@{src/position\_service.cpp}}
+
+
+This files creates a service server for definig the robot\textquotesingle{}s pose.  
+
+
+{\ttfamily \#include \char`\"{}ros/ros.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}rt2\+\_\+assignment1/\+Random\+Position.\+h\char`\"{}}\newline
+Include dependency graph for position\+\_\+service.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{position__service_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{position__service_8cpp_a10f83119b77a8fbd085a5550955f85ff}{rand\+M\+ToN}} (double M, double N)
+\begin{DoxyCompactList}\small\item\em Generate a bounded random number. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{position__service_8cpp_ab65b9ff5368189ad34fe4989d50742e4}{myrandom}} (rt2\+\_\+assignment1\+::\+Random\+Position\+::\+Request \&req, rt2\+\_\+assignment1\+::\+Random\+Position\+::\+Response \&res)
+\begin{DoxyCompactList}\small\item\em it is a Function where get the position request and call the function which generate the random position \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{position__service_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em The main function of the node. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This files creates a service server for definig the robot\textquotesingle{}s pose. 
+
+\begin{DoxyAuthor}{Author}
+S\+A\+M\+I\+UR R\+A\+H\+M\+AN 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+29/07/2022
+\end{DoxyDate}
+Services \+: ~\newline
+ /position\+\_\+server
+
+Description \+:
+
+This node promotes a~ position~ service. When the service is used, a request providing the x and y positio
+
+is used to generate a random position between x or y min and x or y max. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{position__service_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{position__service_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{position\_service.cpp@{position\_service.cpp}!main@{main}}
+\index{main@{main}!position\_service.cpp@{position\_service.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+The main function of the node. 
+
+int \mbox{\hyperlink{position__service_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main(int argc, char $\ast$$\ast$argv)}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & the number of arguent passed as parameters\\
+\hline
+{\em argv} & the vector of string containing each argument\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 when the program has finished
+\end{DoxyReturn}
+description\+: Main function that initialize the server \mbox{\Hypertarget{position__service_8cpp_ab65b9ff5368189ad34fe4989d50742e4}\label{position__service_8cpp_ab65b9ff5368189ad34fe4989d50742e4}} 
+\index{position\_service.cpp@{position\_service.cpp}!myrandom@{myrandom}}
+\index{myrandom@{myrandom}!position\_service.cpp@{position\_service.cpp}}
+\doxysubsubsection{\texorpdfstring{myrandom()}{myrandom()}}
+{\footnotesize\ttfamily bool myrandom (\begin{DoxyParamCaption}\item[{rt2\+\_\+assignment1\+::\+Random\+Position\+::\+Request \&}]{req,  }\item[{rt2\+\_\+assignment1\+::\+Random\+Position\+::\+Response \&}]{res }\end{DoxyParamCaption})}
+
+
+
+it is a Function where get the position request and call the function which generate the random position 
+
+bool myrandom (res, req)
+
+
+\begin{DoxyParams}{Parameters}
+{\em req} & the range of minimum and maximum values that the random position must have in the request made from another node\\
+\hline
+{\em res} & the reply of the server with the x, y and theta coordinates of the target\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true\+: it notifies that it has generated the random position
+\end{DoxyReturn}
+description\+: obtains the interval\textquotesingle{}s parameters from the request, then calls rand\+M\+ToN to obtain number in that interval. \mbox{\Hypertarget{position__service_8cpp_a10f83119b77a8fbd085a5550955f85ff}\label{position__service_8cpp_a10f83119b77a8fbd085a5550955f85ff}} 
+\index{position\_service.cpp@{position\_service.cpp}!randMToN@{randMToN}}
+\index{randMToN@{randMToN}!position\_service.cpp@{position\_service.cpp}}
+\doxysubsubsection{\texorpdfstring{randMToN()}{randMToN()}}
+{\footnotesize\ttfamily double rand\+M\+ToN (\begin{DoxyParamCaption}\item[{double}]{M,  }\item[{double}]{N }\end{DoxyParamCaption})}
+
+
+
+Generate a bounded random number. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em M} & (double)\+: Lower bound of the generated random number. \\
+\hline
+{\em N} & (double)\+: Upper bound of the generated random number.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+rand\+M\+ToN (double)\+: random number, between M and N.
+\end{DoxyReturn}
+Description \+:
+
+This function genearte a random number between M and N 

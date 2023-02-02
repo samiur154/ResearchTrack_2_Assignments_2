@@ -1,0 +1,223 @@
+.TH "go_to_point" 3 "Tue Jan 31 2023" "Version 1.0" "GUI for Robot Control using JupyterNotebook" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+go_to_point
+.SH SYNOPSIS
+.br
+.PP
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fBclbk_odom\fP (msg)"
+.br
+.ti -1c
+.RI "def \fBchange_state\fP (state)"
+.br
+.ti -1c
+.RI "def \fBnormalize_angle\fP (angle)"
+.br
+.ti -1c
+.RI "def \fBfix_yaw\fP (des_pos)"
+.br
+.ti -1c
+.RI "def \fBgo_straight_ahead\fP (des_pos)"
+.br
+.ti -1c
+.RI "def \fBfix_final_yaw\fP (des_yaw)"
+.br
+.ti -1c
+.RI "def \fBdone\fP ()"
+.br
+.ti -1c
+.RI "def \fBplanning\fP (goal)"
+.br
+.ti -1c
+.RI "def \fBmain\fP ()"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBposition_\fP = Point()"
+.br
+.ti -1c
+.RI "int \fByaw_\fP = 0"
+.br
+.ti -1c
+.RI "int \fBstate_\fP = 0"
+.br
+.ti -1c
+.RI "\fBpub_\fP = None"
+.br
+.ti -1c
+.RI "\fBact_s\fP = None"
+.br
+.ti -1c
+.RI "int \fByaw_precision_\fP = math\&.pi / 9"
+.br
+.ti -1c
+.RI "int \fByaw_precision_2_\fP = math\&.pi / 90"
+.br
+.ti -1c
+.RI "float \fBdist_precision_\fP = 0\&.1"
+.br
+.ti -1c
+.RI "float \fBkp_a\fP = \-3\&.0"
+.br
+.ti -1c
+.RI "float \fBkp_d\fP = 0\&.2"
+.br
+.ti -1c
+.RI "float \fBub_a\fP = 0\&.6"
+.br
+.ti -1c
+.RI "float \fBlb_a\fP = \-0\&.5"
+.br
+.ti -1c
+.RI "float \fBub_d\fP = 0\&.6"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+.nf
+.. module:: go_to_point
+    :platform: Unix
+    :synopsis: Python module for go_to_point mode.
+.. moduleauthor:: SAMIUR RAHMAN
+
+Publisher:
+    \cmd_vel
+    
+Subscriber:
+    \odom
+    
+Action Server: <BR>
+    \go_to_point
+    
+This node define the movememnt of the robot using the go_to_point algorithm.
+.fi
+.PP
+ 
+.SH "Function Documentation"
+.PP 
+.SS "def go_to_point\&.change_state ( state)"
+
+.PP
+.nf
+Function to specify the state value
+
+Update the current global state
+
+Args: 
+    state (int):  new state
+.fi
+.PP
+ 
+.SS "def go_to_point\&.clbk_odom ( msg)"
+
+.PP
+.nf
+Service callback of the odometry subscriber
+Recieves (x,y,z and theta) from the Odom message.
+Args:
+    msg (Odometry): odometry message.
+.fi
+.PP
+ 
+.SS "def go_to_point\&.done ()"
+
+.PP
+.nf
+Stop the robot
+
+Args: 
+  None
+Set the robot velocities to 0.
+.fi
+.PP
+ 
+.SS "def go_to_point\&.fix_final_yaw ( des_yaw)"
+
+.PP
+.nf
+ Turns the robot to reach
+ the final desired yaw
+ Args:
+   des_yaw (Point):  desired final yaw
+.fi
+.PP
+ 
+.SS "def go_to_point\&.fix_yaw ( des_pos)"
+
+.PP
+.nf
+Orient the robot in a desired way
+
+Args:  des_yaw (float):  desired yaw
+    next_state (int): next state to set
+.fi
+.PP
+ 
+.SS "def go_to_point\&.go_straight_ahead ( des_pos)"
+
+.PP
+.nf
+Move straignt to the target
+ Set the linear and angular velocity
+ depending on the distance to the 
+ goal pose.
+ 
+ Args:
+   des_pos (Point):  desired (x, y) position
+.fi
+.PP
+ 
+.SS "def go_to_point\&.main ()"
+
+.PP
+.nf
+Main function to manage 
+the robot behaviour
+
+Including :
+- the initialization of the *go_to_point*  node
+- the publisher for the "\cmd_vel" topic
+- the subscriber to the "\odom" topic
+- the action server *\go_to_point*
+.fi
+.PP
+ 
+.SS "def go_to_point\&.normalize_angle ( angle)"
+
+.PP
+.nf
+Function to normalize an angle
+
+Args: angle (float):  angle to be normalized
+.fi
+.PP
+ 
+.SS "def go_to_point\&.planning ( goal)"
+
+.PP
+.nf
+Set the appropriate behaviour depending
+on the current robot state, in orderd
+to reach the goal.
+The state machine keeps running until
+the goal is reached or the action is
+preempted (the goal gets cancelled).
+
+Args:
+  goal (PoseActionGoal): (x,y,theta) goal pose
+.fi
+.PP
+ 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for GUI for Robot Control using JupyterNotebook from the source code\&.

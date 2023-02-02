@@ -1,9 +1,9 @@
-""" 
-..module: go_to_point
-    :platform:Unix
-    :synopsis: This file contain the description of go_to_point node to control robot
-    :moduleauthor: SAMIUR RAHMAN
-    	
+"""
+.. module:: go_to_point
+    :platform: Unix
+    :synopsis: Python module for go_to_point mode.
+.. moduleauthor:: SAMIUR RAHMAN
+
 Publisher:
     \cmd_vel
     
@@ -13,7 +13,7 @@ Subscriber:
 Action Server: <BR>
     \go_to_point
     
-This node define the movememnt of the robot using the go_to_point algorithm
+This node define the movememnt of the robot using the go_to_point algorithm.
 
 """
 

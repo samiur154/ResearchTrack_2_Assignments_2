@@ -1,0 +1,121 @@
+.TH "src/position_service.cpp" 3 "Tue Jan 31 2023" "Version 1.0" "GUI for Robot Control using JupyterNotebook" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src/position_service.cpp \- This files creates a service server for definig the robot's pose\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'ros/ros\&.h'\fP
+.br
+\fC#include 'rt2_assignment1/RandomPosition\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "double \fBrandMToN\fP (double M, double N)"
+.br
+.RI "Generate a bounded random number\&. "
+.ti -1c
+.RI "bool \fBmyrandom\fP (rt2_assignment1::RandomPosition::Request &req, rt2_assignment1::RandomPosition::Response &res)"
+.br
+.RI "it is a Function where get the position request and call the function which generate the random position "
+.ti -1c
+.RI "int \fBmain\fP (int argc, char **argv)"
+.br
+.RI "The main function of the node\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+This files creates a service server for definig the robot's pose\&. 
+
+
+.PP
+\fBAuthor\fP
+.RS 4
+SAMIUR RAHMAN 
+.RE
+.PP
+\fBVersion\fP
+.RS 4
+1\&.0 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+29/07/2022
+.RE
+.PP
+Services : 
+.br
+ /position_server
+.PP
+Description :
+.PP
+This node promotes a  position  service\&. When the service is used, a request providing the x and y positio
+.PP
+is used to generate a random position between x or y min and x or y max\&. 
+.SH "Function Documentation"
+.PP 
+.SS "int main (int argc, char ** argv)"
+
+.PP
+The main function of the node\&. int \fBmain(int argc, char **argv)\fP
+.PP
+\fBParameters\fP
+.RS 4
+\fIargc\fP the number of arguent passed as parameters
+.br
+\fIargv\fP the vector of string containing each argument
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+0 when the program has finished
+.RE
+.PP
+description: Main function that initialize the server 
+.SS "bool myrandom (rt2_assignment1::RandomPosition::Request & req, rt2_assignment1::RandomPosition::Response & res)"
+
+.PP
+it is a Function where get the position request and call the function which generate the random position bool myrandom (res, req)
+.PP
+\fBParameters\fP
+.RS 4
+\fIreq\fP the range of minimum and maximum values that the random position must have in the request made from another node
+.br
+\fIres\fP the reply of the server with the x, y and theta coordinates of the target
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+true: it notifies that it has generated the random position
+.RE
+.PP
+description: obtains the interval's parameters from the request, then calls randMToN to obtain number in that interval\&. 
+.SS "double randMToN (double M, double N)"
+
+.PP
+Generate a bounded random number\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIM\fP (double): Lower bound of the generated random number\&. 
+.br
+\fIN\fP (double): Upper bound of the generated random number\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+randMToN (double): random number, between M and N\&.
+.RE
+.PP
+Description :
+.PP
+This function genearte a random number between M and N 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for GUI for Robot Control using JupyterNotebook from the source code\&.
