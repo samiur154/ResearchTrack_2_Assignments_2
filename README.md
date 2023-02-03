@@ -478,7 +478,7 @@ run the command below to launch the simulation and all the required nodes.
 - In the second tab:
 run the command to open jupyter notebook.
 ```jupyter notebook --allow-root```
-and open the notebook named as **jupyter_5066315.ipynb**.
+and open the notebook named as ```jupyter_5066315.ipynb```.
 
 ### Conclusion ###
 
