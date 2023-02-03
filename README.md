@@ -1,4 +1,5 @@
-# RT2_Assignment2
+# [Research Track 2_Assignment 2](https://corsi.unige.it/off.f/2021/ins/51207) 
+
 ## Jupyter notebook package:
 This package includes Jupyter Notebooks, which act as a user interface node and assist in controlling the robot in the gazebo environment. This node will have a graphical interface with a Jupyter notebook for starting and stopping the robot, controlling the robot in the desired direction, and also analyzing various plots. In the action package, the user interface is simply a command line interface through which the user can "start" or "stop" the robot.
 
