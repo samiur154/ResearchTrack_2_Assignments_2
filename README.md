@@ -6,8 +6,39 @@ Course Instructor: [Prof. CARMINE RECCHIUTO](https://rubrica.unige.it/personale/
 ## Abstract ##
 [Jupyter Notebook](https://jupyter.org/) is an open source web application which is used to create and share documents that contain real-time code, equation, data visualizations, text, and so on. This Jupyetr Nootebook is designed to create the GUI for Mobile Robot Control. Also, this notebook is developed as an user interface. For this, ***Jupyter Notebook*** tool is used.
 
+## Introduction ##
+Jupyter Notebooks are a spin-off project from the IPython project, which is used to have an IPython
+Notebook project itself. The _IPython Kernel_, which allows us to write our program in Python, but there are currently over 100 other kernels that can also be used. The Jupyter Notebook is not included with Python, so if we want to try it out, we will need to install Jupyter on our system.
 
-## Jupyter notebook package
+## Installation
+To create Jupyter Interface, *Jupyter Notebook* tool is required on your system. To install Jupyter follow the steps given below:
+
+```
+pip3 install jupyter bqplot pyyaml ipywidgets
+```
+```
+jupyter nbextension enable --py widgetsnbextension
+```
+
+* **Note:** If you find errors such as *ImportError: No module named widgetsnbextension*. To resolve such kind of error follow the below links.
+      <ul>
+      <li>[Link 1](http://github.com/jupyter-widgets/pywidgets/issues/568) to know what actual the erro is about.</li>
+      <li>[Link 2](http://lpywidgets.readthedocs.io/en/stable/user_install.html) command to resolve the error.</li>
+      </ul>
+
+
+Now, with these two commands Jupyter is installed, let’s start with the interface for the project **Software Architecture for Mobile Robot Control**. To get started, all you need to do is open up your terminal application and go to a folder of your choice. Then run the below command:
+```
+jupyter notebook --allow-root
+```
+*Note:* The ***--allow-root*** option is only necessary if you are using the Docker Image.
+Also, in the docker you will probably need to update firefox with ```apt-get install firefox```)
+
+Below is the figure which shows ***Notebook Server***. 
+
+![alt text](jupyterserver.png) 
+
+## Jupyter notebook Package ##
 This package includes Jupyter Notebooks, which act as a user interface node and assist in controlling the robot in the gazebo environment. This node will have a graphical interface with a Jupyter notebook for starting and stopping the robot, controlling the robot in the desired direction, and also analyzing various plots. In the action package, the user interface is simply a command line interface through which the user can "start" or "stop" the robot.
 
 ## Jupyter Notebook desription:
