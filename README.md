@@ -402,15 +402,45 @@ Below figure shows the **cmd_vel linear velocity** visualization.
   <img width="700" height="400" src="https://user-images.githubusercontent.com/80621864/154956271-f240dbb2-2922-44da-ba1d-ef6c77697306.jpg">
 </p>
 
+
+### Histogram: Time taken to reach the target ###
+
+Histogram plot in this block is used to show the time rached by the robot to reach a goal during random moving behaviour.
+A subscriber to "go_to_point/result" from the action "Planning" is used to know the time period.and the same process is used for the bar plot also.
+
+```
+fig_time_target,ax_time_target= plot.subplots() 
+
+bins=15
+
+ax_time_target.set_title("Time-goal")
+ax_time_target.set(xlabel="Time periods", ylabel="Number of goal reached")
+ax_time_target.hist([], bins)
+
+def time_targets(msg):
+  global reached_targets, random_moving, task_time, time_updation, ax_time_target, xlim
+  if random_moving==True:
+    reached_targets = reached_targets+1
+    
+
+    time_updation.append(rospy.Time.now().to_sec()-task_time.to_sec())
+    task_time=rospy.Time.now()
+    
+        
+    ax_time_target.hist(time_updation, bins, color='g')
+  
+
+jr.subscribe('/go_to_point/result',rt2_assignment1.msg.PlanningAction, time_targets)
+fig_time_target.show()
+```
+
+![time_jupy](https://user-images.githubusercontent.com/80621864/154956810-0b0ae5db-65ec-4cbd-af07-1082146131b8.jpg)
+
+
 ### Bar plot ###
 Bar plot is used for showing the number of target reached and the number of target that as cancelled by the user.
 
 ![bar_tar](https://user-images.githubusercontent.com/80621864/154956539-3706afeb-484f-4db5-8399-a2c252391a55.jpg)
-
-### Histogram plot ###
-The histogram plot shows the time taken to reach the target by the robot wn it is reached the goal.
-
-![time_jupy](https://user-images.githubusercontent.com/80621864/154956810-0b0ae5db-65ec-4cbd-af07-1082146131b8.jpg)
 
 ## Running the package ###
 - In the first tab:
