@@ -1,9 +1,9 @@
 /**
  * \file state_machine.cpp
- * \brief This files defines a finite state machine for controlling the robot in the Gazebo environment
- * \author SAMIUR RAHMAN
+ * \brief This files defines a finite state machine for controlling the robot
+ * \author Samiur Rahman
  * \version 1.0
- * \date 29/07/2022
+ * \date 02/02/2023
  * 
  * \details
  * 
@@ -18,14 +18,14 @@
  * 
  *  Description :
  *  
- *  This node implements the state machine for the input to be provided by the user 
- *  to control the holonomic robot. It includes:
+ *  This node implements the finite state machine for the input on the control of 
+ *  the holonomic robot. It includes:
  *  - An Action client "go_to_point" that interacts with the action
  *    "Planning" to:
- * 		- set a new goal randomly when the user presses 1 to start 
- * 		- check if the goal has been reached by the robot
- * 		- check if the goal has been cancelled,when the user presses 0 to stop the robot
- * 		- Define the new state
+ * 		- set a new goal
+ * 		- check if the goal has been reached
+ * 		- check if the goal has been cancelled 
+ * 		- Define the new state 
  *  - A Service server that advertise the command line user interface
 * 	- A Service client that requires a new target postion from the 
 * 		/position_server
@@ -44,9 +44,9 @@ bool start = false;
 /**
  * bool user_interface(req, res)
  * 
- * \brief Function implemented to get the user's command 
+ * \brief Function impemented to get the user's command 
  * 
- * \param req: request done by the client (start or stop the robot)
+ * \param req: request done by the client (start/stop the robot)
  * 
  * \param res: respondse generated from the server
  * 
@@ -78,15 +78,15 @@ bool user_interface(rt2_assignment1::Command::Request &req, rt2_assignment1::Com
  * \return 0 when the program ends
  * 
  * description:
- *    The main function, define all the initializations as follows:
+ *    The main function, makes all the initializations as follows:
  * 
- *    client_rp: it is used for  getting a random goal at custom service RandomPosition
- *    goal_position: the random goal generated as a Position Goal and send it to /go_to_point node
- *    service: it is read the command which is sent by the user from the Command service custom message
+ *    client_rp: to ask a random goal at custom service RandomPosition
+ *    goal_position: in order to set the random goal generated as a PositionGoal and send it to /go_to_point node
+ *    service: read the command sent by the user from the Command service custom message
  * 
  *    After initializations it generates a request for the random position in interval [-5, 5], then executes an infinite loop 
- *    in which it gets the random position and sends it as a goal position to the /go_to_point node and waits untill
- *    the target is reached. In case in which the command from /user_interface is "stop" (so start==false) so that the goal is cancelled
+ *    in wich it gets the ranodom position and sends it as a goal position to the /go_to_point node and waits untill
+ *    the target is reached. In case in wich the command from /user_interface is "stop" (so start==false) the goal is cancelled
  *    and the robot is stopped, otherwise the loop is executed again.
  *    
  **/

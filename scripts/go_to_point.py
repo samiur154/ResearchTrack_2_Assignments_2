@@ -1,21 +1,21 @@
-""" 
-..module: go_to_point
-    :platform:Unix
-    :synopsis: This file contain the description of go_to_point node to control robot
-    :moduleauthor: SAMIUR RAHMAN
-    	
-Publisher:
-    \cmd_vel
-    
-Subscriber:
-    \odom
-    
-Action Server: <BR>
-    \go_to_point
-    
-This node define the movememnt of the robot using the go_to_point algorithm
-
-"""
+## @package rt2_assignment1
+#	\file go_to_point.py
+#	\brief This file contains the go_to_point function to describe the movement of the holonomic robot
+#	\author Samuir Rehman 	
+#	\date 02/02/2023
+#	
+#	\details
+#
+#	\Publisher:
+#	    \cmd_vel
+#
+#	\Subscriber:
+#	    \odom
+#
+#	\Action Server: <BR>
+#	    \go_to_point
+#
+#	This node defines go_to_poin node to define movement
 
 
 #!/usr/bin/env python3
@@ -34,11 +34,8 @@ position_ = Point()
 yaw_ = 0
 position_ = 0
 state_ = 0
-#publisher
 pub_ = None
 
-# action_server
-act_s = None
 
 # parameters for control
 yaw_precision_ = math.pi / 9  # +/- 20 degree allowed
@@ -51,15 +48,21 @@ lb_a = -0.5
 ub_d = 0.6
 
 
+##
+# Service callback of the odometry subscriber
+#
+#
+#    provides the X,Y,Z and angular(theta) datas from the Odom message.
+#    Args:
+#      msg (Odometry): odometry message.
+# 
+
+
+# action_server
+act_s = None
+
+# callbacks
 def clbk_odom(msg):
-    """
-    
-    Service callback of the odometry subscriber
-    Recieves (x,y,z and theta) from the Odom message.
-    Args:
-        msg (Odometry): odometry message.
-        
-    """
     global position_
     global yaw_
 
@@ -75,42 +78,45 @@ def clbk_odom(msg):
     yaw_ = euler[2]
 
 
+##
+#  Function to specify the state_ value
+#
+#   
+#   Update the current global state
+#    Args: state (int):  new state
+#
+# 
+
 def change_state(state):
-    """
-    
-    Function to specify the state value
-    
-    Update the current global state
-    
-    Args: 
-        state (int):  new state
-    
-    """    
     global state_
     state_ = state
     print ('State changed to [%s]' % state_)
 
+
+##
+# 
+# \brief Normalize the angle
+# \param angle(float): float varaible for the angle to normalize
+# \return: returns the normalized angle 
+#
+# Function to normalize the angle of the robot
+###
+
 def normalize_angle(angle):
-    """
-    
-    Function to normalize an angle
-    
-    Args: angle (float):  angle to be normalized
-    
-    """
     if(math.fabs(angle) > math.pi):
         angle = angle - (2 * math.pi * angle) / (math.fabs(angle))
     return angle
 
+
+###
+# 
+# \brief Fix the yaw angle
+# \param des_pos(Point): desired position to reach a specific goal
+#
+# Function used to orient the robot with respect to the target position
+###
+
 def fix_yaw(des_pos):
-    """
-    
-    Orient the robot in a desired way
-    
-    Args:  des_yaw (float):  desired yaw
-        next_state (int): next state to set
-        
-    """
     desired_yaw = math.atan2(des_pos.y - position_.y, des_pos.x - position_.x)
     err_yaw = normalize_angle(desired_yaw - yaw_)
     twist_msg = Twist()
@@ -125,18 +131,17 @@ def fix_yaw(des_pos):
     if math.fabs(err_yaw) <= yaw_precision_2_:
         change_state(1)
 
+
+##
+# 
+# \brief Function to go straight
+# \param des_pos(Point): the desired position to reach
+#
+# Function to call in case the robot has to go forward once it is correctly orriented
+#
+# Set the linear and angular velocity of the robot according to the distance to the goal
+##
 def go_straight_ahead(des_pos):
-    """
-    
-    Move straignt to the target
-     Set the linear and angular velocity
-     depending on the distance to the 
-     goal pose.
- 
-     Args:
-       des_pos (Point):  desired (x, y) position
-       
-    """
     desired_yaw = math.atan2(des_pos.y - position_.y, des_pos.x - position_.x)
     err_yaw = desired_yaw - yaw_
     err_pos = math.sqrt(pow(des_pos.y - position_.y, 2) +
@@ -158,15 +163,17 @@ def go_straight_ahead(des_pos):
         #print ('Yaw error: [%s]' % err_yaw)
         change_state(0)
 
+
+##
+# 
+# \brief Final fix to yaw angle
+# \param des_yaw(float): the desired yaw
+#
+# Once the goal's position is acheived the function,the angular data is changed according to the goal
+# 
+## 
+
 def fix_final_yaw(des_yaw):
-    """
-    
-     Turns the robot to reach
-     the final desired yaw
-     Args:
-       des_yaw (Point):  desired final yaw
-       
-    """  
     err_yaw = normalize_angle(des_yaw - yaw_)
     rospy.loginfo(err_yaw)
     twist_msg = Twist()
@@ -181,36 +188,31 @@ def fix_final_yaw(des_yaw):
     if math.fabs(err_yaw) <= yaw_precision_2_:
         change_state(3)
 
+
+##
+#  \brief Function to call when the target is reached or when it's cancelled,
+#         it sets to zero the linear and angualar velocity of the robot in order to stop the robot.
+##
+
 def done():
-    """
-    
-    Stop the robot
-    
-    Args: 
-      None
-    Set the robot velocities to 0.
- 
-    """
     twist_msg = Twist()
     twist_msg.linear.x = 0
     twist_msg.angular.z = 0
     pub_.publish(twist_msg)
 
 
+##
+#    Set the appropriate behaviour depending
+#    on the current robot state, in orderd
+#    to reach the goal.
+#    The state machine keeps running until
+#    the goal is reached or when the goal is preempted 
+#
+#
+#    Args:
+#      goal (PoseActionGoal): (x,y,theta) goal pose
+# 
 def planning(goal):
-    """
-    
-    Set the appropriate behaviour depending
-    on the current robot state, in orderd
-    to reach the goal.
-    The state machine keeps running until
-    the goal is reached or the action is
-    preempted (the goal gets cancelled).
-    
-    Args:
-      goal (PoseActionGoal): (x,y,theta) goal pose
-      
-    """
 
     global state_,desired_position
 
@@ -249,19 +251,20 @@ def planning(goal):
         else:
           rospy.logerr('Unknown state!')
 
+
+#
+# \brief Main function of the node
+#
+# The main function for this script: it initializes the publisher, the subscribers and the SimpleActionServer, in particular
+#
+# creates a publisher on topic /cmd_vel to publish the robot's velocity
+# creates a subscriber on topic /odom to get the current position of the robot
+# creates an action in order to manage the state_machine
+#
+##
+
+
 def main():
-    """
-    
-    Main function to manage 
-    the robot behaviour
-    
-    Including :
-	- the initialization of the *go_to_point*  node
-	- the publisher for the "\cmd_vel" topic
-	- the subscriber to the "\odom" topic
-	- the action server *\go_to_point*
-	
-    """
     global pub_,active_, act_s
     rospy.init_node('go_to_point')
     pub_ = rospy.Publisher('/cmd_vel', Twist, queue_size=1)

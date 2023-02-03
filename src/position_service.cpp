@@ -1,9 +1,9 @@
 /**
  * \file position_service.cpp
  * \brief This files creates a service server for definig the robot's pose
- * \author SAMIUR RAHMAN
+ * \author Samiur Rahman
  * \version 1.0
- * \date 29/07/2022
+ * \date 03/03/2022
  * 
  * \details
  * 
@@ -12,9 +12,8 @@
  * 
  *  Description :
  *  
- *  This node promotes a   position  service. When the service is used,
-     a request providing the x and y positio
- *  
+ *  This node advertise a position service. When the service is requested,
+ *  a request containing minimum and maximum values for the x and y position
  *  is used to generate a random position between x or y min and x or y
  *  max.
 * 
@@ -45,16 +44,16 @@ double randMToN(double M, double N)
 /** 
  * bool myrandom (res, req)
  * 
- * \brief it is a Function where get the position request and call the function which generate the random position
+ * \brief Function to get the position request and call the function to generate the random position
  * 
- * \param req: the range of minimum and maximum values that the random position must have in the request made from another node
+ * \param req: request done from an other node with the range of minimum and maximum values that the random position must have
  * 
  * \param res: the reply of the server with the x, y and theta coordinates of the target
  * 
  * \return true: it notifies that it has generated the random position
  * 
  * description:
- *     obtains the interval's parameters from the request, then calls randMToN to obtain number in that interval.
+ *      gets the params for the interval from the request, then call the function randMToN to obtain a number in that interval
  * 
  */
 

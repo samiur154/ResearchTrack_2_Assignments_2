@@ -1,29 +1,29 @@
-"""
-.. module:: user_interface
-   :platform: Unix
-   :synopsis: Python module for the user Interface
-.. moduleauthor:: SAMIUR RAHMAN
-
- The user can start and stop using the user interface implemented by this node in the terminal.
-
-Service:
-   /user_interface
-   
-"""
+## @package rt2_assignment1
+#	\file user_interface.py
+#	\brief This file contain the user interface to start and stop the robot
+#	\author Samiur Rahman	
+#	\date 02/02/2023
+#	
+#	\details
+#
+#	\Client : <BR>
+#		\user_interface
+#
+#	This node define the command line user interface for the control of the robot
 
 import rospy
 import time
 from rt2_assignment1.srv import Command
-def main():
-    """
-    This function initializes the ROS node and waits for the user to
-    insert *start* or *stop* to control the robot, by relying on the
-    `rospy <http://wiki.ros.org/rospy/>`_ module.
-    
-    The user message is passed to the service``user_interface``,
-    advertised by :mod:`go_to_point`.
 
-    """
+
+## 
+# \breif The main fuction of the script
+#
+# It initializes the client to /user_interface.
+# if the user presses 1 sends a "start" message, otherwise it sends a "stop" message
+#
+##
+def main():
     rospy.init_node('user_interface')
     ui_client = rospy.ServiceProxy('/user_interface', Command)
     time.sleep(10)

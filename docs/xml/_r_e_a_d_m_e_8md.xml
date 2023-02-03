@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="_r_e_a_d_m_e_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>Second<sp/>Assignment<sp/>of<sp/>the<sp/>Research<sp/>Track<sp/>2<sp/>course<sp/>(Robotics_5051520<sp/>Engineering<sp/>Unige)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>package<sp/>contains<sp/>the<sp/>nodes<sp/>and<sp/>the<sp/>simulation<sp/>environment<sp/>for<sp/>controlling<sp/>a<sp/>mobile<sp/>robot<sp/>in<sp/>the<sp/>Gazebo<sp/>simulation<sp/>environment<sp/>and<sp/>jupyter<sp/>notebook<sp/>to<sp/>have<sp/>a<sp/>graphical<sp/>userinterface<sp/>and<sp/>control<sp/>the<sp/>robot<sp/>through<sp/>it.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>To<sp/>launch<sp/>the<sp/>gazebo<sp/>node,<sp/>please<sp/>run:</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">roslaunch<sp/>rt2_assignment1<sp/>sim.launch</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>To<sp/>launch<sp/>the<sp/>jupyter<sp/>notebook<sp/>run<sp/>the<sp/>commands<sp/>below:</highlight></codeline>
+<codeline><highlight class="normal">```<sp/>jupyter<sp/>notebook<sp/>--allow-root<sp/>```<sp/>and<sp/>open<sp/>the<sp/>notebook<sp/>named<sp/>as<sp/>jupyter_5051520.ipynb.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Doxygen<sp/>documentation:</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Doxygen<sp/>is<sp/>the<sp/>de<sp/>facto<sp/>standard<sp/>tool<sp/>for<sp/>generating<sp/>documentation<sp/>from<sp/>annotated<sp/>C++<sp/>sources,<sp/>but<sp/>it<sp/>also<sp/>supports<sp/>other<sp/>popular<sp/>programming<sp/>languages<sp/>such<sp/>as<sp/>C,<sp/>Objective-C,<sp/>C#,<sp/>PHP,<sp/>Java,<sp/>Python,<sp/>IDL<sp/>(Corba,<sp/>Microsoft,<sp/>and<sp/>UNO/OpenOffice<sp/>flavors),<sp/>Fortran,<sp/>VHDL<sp/>and<sp/>to<sp/>some<sp/>extent<sp/>D.It<sp/>can<sp/>generate<sp/>an<sp/>on-line<sp/>documentation<sp/>browser<sp/>(in<sp/>HTML)<sp/>and/or<sp/>an<sp/>off-line<sp/>reference<sp/>manual<sp/>(in<sp/>$\mbox{\LaTeX}$)<sp/>from<sp/>a<sp/>set<sp/>of<sp/>documented<sp/>source<sp/>files.<sp/>There<sp/>is<sp/>also<sp/>support<sp/>for<sp/>generating<sp/>output<sp/>in<sp/>RTF<sp/>(MS-Word),<sp/>PostScript,<sp/>hyperlinked<sp/>PDF,<sp/>compressed<sp/>HTML,<sp/>and<sp/>Unix<sp/>man<sp/>pages.<sp/>The<sp/>documentation<sp/>is<sp/>extracted<sp/>directly<sp/>from<sp/>the<sp/>sources,<sp/>which<sp/>makes<sp/>it<sp/>much<sp/>easier<sp/>to<sp/>keep<sp/>the<sp/>documentation<sp/>consistent<sp/>with<sp/>the<sp/>source<sp/>code.usig<sp/>command<sp/>***doxywizard***<sp/>we<sp/>select<sp/>the<sp/>file<sp/>location<sp/>output<sp/>need<sp/>to<sp/>be<sp/>attained.</highlight></codeline>
+<codeline><highlight class="normal">*<sp/>Doxygen<sp/>documentation<sp/>is<sp/>done<sp/>for<sp/>the<sp/>**go_to_point.py**,**user_interface.py**,**state_machine.cpp**<sp/>and<sp/>**position_service.cpp**<sp/>and<sp/>and<sp/>the<sp/>attained<sp/>in<sp/>the<sp/>form<sp/>of<sp/>HTML,LATEX.</highlight></codeline>
+<codeline><highlight class="normal">###<sp/>Here<sp/>ae<sp/>some<sp/>sample<sp/>HTML<sp/>outputs:</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**go_to_point.py**:</highlight></codeline>
+<codeline><highlight class="normal">![dox_go](https://user-images.githubusercontent.com/80621864/154959404-88abe243-5ae2-410d-8177-715aee6c0bf3.jpg)</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>**user_interface.py**:</highlight></codeline>
+<codeline><highlight class="normal">![usr_doxy](https://user-images.githubusercontent.com/80621864/154959473-6df15b5c-e4be-4fe5-9717-badafbd17b38.jpg)</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>**state_machine.cpp**:</highlight></codeline>
+<codeline><highlight class="normal">![st_doxy](https://user-images.githubusercontent.com/80621864/154959538-34e5a4a0-ab1d-49d8-9977-566bf376f677.jpg)</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>**poition_service.cpp**:</highlight></codeline>
+<codeline><highlight class="normal">![pos_dox](https://user-images.githubusercontent.com/80621864/154959614-7703fa43-6423-49b2-b529-ce4a2ceab9d4.jpg)</highlight></codeline>
+<codeline></codeline>
+    </programlisting>
+    <location file="README.md"/>
+  </compounddef>
+</doxygen>

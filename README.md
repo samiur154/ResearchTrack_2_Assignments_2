@@ -1,47 +1,29 @@
-# RT2_Assignment2
-## Jupyter notebook package:
-This package includes Jupyter Notebooks, which act as a user interface node and assist in controlling the robot in the gazebo environment. This node will have a graphical interface with a Jupyter notebook for starting and stopping the robot, controlling the robot in the desired direction, and also analyzing various plots. In the action package, the user interface is simply a command line interface through which the user can "start" or "stop" the robot.
+# Second Assignment of the Research Track 2 course (Robotics_5051520 Engineering Unige)
 
-## Jupyter Notebook desription:
-Plots, buttons is for controlling the robot, and displays for various analysis data on the robot's state are all included in the Jupyter Notebook. The buttons and plots that this node can offer are listed below.
+The package contains the nodes and the simulation environment for controlling a mobile robot in the Gazebo simulation environment and jupyter notebook to have a graphical userinterface and control the robot through it.
+- To launch the gazebo node, please run:
+```
+roslaunch rt2_assignment1 sim.launch
+```
+- To launch the jupyter notebook run the commands below:
+``` jupyter notebook --allow-root ``` and open the notebook named as jupyter_5051520.ipynb.
 
-### Start,Stop,foreward,backward,left,right buttons:
-The robot may be manually started and stopped with this button, and it can also be moved in any direction using the forward, backward, left, and right buttons. These buttons provide as a means of requesting customer service.
-
-![but_jupy](https://user-images.githubusercontent.com/80621864/154955314-6963db8c-23d2-49e4-811a-2452e962a76c.jpg)
-
-### Robot's moving position in real time:
-it is a live plot that displays the robot's condition in real time. It is an x, y plot that is used to indicate the robot's position as well as the direction it is travelling in the gazebo environment. Robot motion will be shown by a black line that looks like a diamond.
-![map_jupy](https://user-images.githubusercontent.com/80621864/154955780-9474e2e9-7205-48a8-a9d6-31f4c7c4ab6a.jpg)
-
-### Velocity visualization plot:
-This figure makes it easier to see how the **cmd_vel** compares to the **odom(actual velocity)**. Both in linear and angular positions, it is visible.  against the 
-
-![Screenshot 2022-02-21 114438](https://user-images.githubusercontent.com/80621864/154956187-c5c24725-6045-499d-8544-8cb020882c2d.jpg) ![Screenshot 2022-02-21 114414](https://user-images.githubusercontent.com/80621864/154957806-3044a32b-0ba2-490a-8863-b9f7fdbf1c4c.jpg) ![Screenshot 2022-02-21 114343](https://user-images.githubusercontent.com/80621864/154956251-a9522580-93a5-4e4a-8cb1-444f4b790fdc.jpg) ![vel_jupy](https://user-images.githubusercontent.com/80621864/154956271-f240dbb2-2922-44da-ba1d-ef6c77697306.jpg)
-
-### Bar plot:
-Bar plot is used for showing the number of target reached and the number of target that as cancelled by the user.
-
-![bar_tar](https://user-images.githubusercontent.com/80621864/154956539-3706afeb-484f-4db5-8399-a2c252391a55.jpg)
-
-### Histogram plot:
-The histogram plot shows the time taken to reach the target by the robot wn it is reached the goal.
-
-![time_jupy](https://user-images.githubusercontent.com/80621864/154956810-0b0ae5db-65ec-4cbd-af07-1082146131b8.jpg)
-
-## Running the package:
-- In the first tab:
-run the command below to launch the simulation and all the required nodes.
-```roslaunch rt2_assignment2 sim.launch```
-- In the second tab:
-run the command to open jupyter notebook.
-```jupyter notebook --allow-root```
-and open the notebook named as **jupyter_505150.ipynb** .
+## Doxygen documentation:
+* Doxygen is the de facto standard tool for generating documentation from annotated C++ sources, but it also supports other popular programming languages such as C, Objective-C, C#, PHP, Java, Python, IDL (Corba, Microsoft, and UNO/OpenOffice flavors), Fortran, VHDL and to some extent D.It can generate an on-line documentation browser (in HTML) and/or an off-line reference manual (in $\mbox{\LaTeX}$) from a set of documented source files. There is also support for generating output in RTF (MS-Word), PostScript, hyperlinked PDF, compressed HTML, and Unix man pages. The documentation is extracted directly from the sources, which makes it much easier to keep the documentation consistent with the source code.usig command ***doxywizard*** we select the file location output need to be attained.
+* Doxygen documentation is done for the **go_to_point.py**,**user_interface.py**,**state_machine.cpp** and **position_service.cpp** and and the attained in the form of HTML,LATEX.
+### Here ae some sample HTML outputs:
+- **go_to_point.py**:
+![dox_go](https://user-images.githubusercontent.com/80621864/154959404-88abe243-5ae2-410d-8177-715aee6c0bf3.jpg)
 
 
+- **user_interface.py**:
+![usr_doxy](https://user-images.githubusercontent.com/80621864/154959473-6df15b5c-e4be-4fe5-9717-badafbd17b38.jpg)
 
 
+- **state_machine.cpp**:
+![st_doxy](https://user-images.githubusercontent.com/80621864/154959538-34e5a4a0-ab1d-49d8-9977-566bf376f677.jpg)
 
 
-
+- **poition_service.cpp**:
+![pos_dox](https://user-images.githubusercontent.com/80621864/154959614-7703fa43-6423-49b2-b529-ce4a2ceab9d4.jpg)
 
