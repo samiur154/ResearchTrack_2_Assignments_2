@@ -434,13 +434,42 @@ jr.subscribe('/go_to_point/result',rt2_assignment1.msg.PlanningAction, time_targ
 fig_time_target.show()
 ```
 
-![time_jupy](https://user-images.githubusercontent.com/80621864/154956810-0b0ae5db-65ec-4cbd-af07-1082146131b8.jpg)
+<p align="center">
+  <img width="700" height="400" src="https://user-images.githubusercontent.com/80621864/154956810-0b0ae5db-65ec-4cbd-af07-1082146131b8.jpg">
+</p>
 
+### Bar Graph: REACHED TARGETS VS CANCELLED TARGETS ###
 
-### Bar plot ###
-Bar plot is used for showing the number of target reached and the number of target that as cancelled by the user.
+In this block, bar plot is used to show the number of reached targets and cancelled targets during the random movement behaviour .when the robot sucessfully reach a goal in its random movement behaviour, reached target will increase if the user cancels the random movement behaviuor,then the cancelled target will increase.
 
-![bar_tar](https://user-images.githubusercontent.com/80621864/154956539-3706afeb-484f-4db5-8399-a2c252391a55.jpg)
+It is used for showing the number of target reached and the number of target that as cancelled by the user.
+
+```
+targets_fig=plot.figure()
+targets_ax=targets_fig.add_subplot(111)
+targets=[]
+langs = ['Reached targets', 'Cacelled targets']
+
+##x-axis indicates time and y axis indicates number of targets
+
+def animate_targets(i):
+    global reached_targets, cancelled_targets, targets
+    targets=[reached_targets, cancelled_targets]
+    targets_ax.bar(langs, targets, color='m')
+    targets_ax.set_title("Reached targets vs Cancelled targets")
+    if reached_targets>=cancelled_targets:
+        targets_ax.set_ylim(0, reached_targets+10)
+    else:
+        targets_ax.set_ylim(0, cancelled_targets+10)
+   
+    
+
+targets_bar = animation.FuncAnimation(targets_fig, animate_targets, interval=100)
+```
+
+<p align="center">
+  <img width="700" height="400" src="https://user-images.githubusercontent.com/80621864/154956539-3706afeb-484f-4db5-8399-a2c252391a55.jpg">
+</p>
 
 ## Running the package ###
 - In the first tab:
@@ -450,3 +479,9 @@ run the command below to launch the simulation and all the required nodes.
 run the command to open jupyter notebook.
 ```jupyter notebook --allow-root```
 and open the notebook named as **jupyter_5066315.ipynb**.
+
+### Conclusion ###
+
+I'm satisfied with the final result, even if better improvements can be done. First of all some parameters can be changed since they may be not optimal. Having said that, there are some particular improvenments that I want to highlight:
+
+* In jupyter notebook data real time data is updating using ```%matplotlib widget``` but at some stage it's lagged and due to this data updation is lagged. This can be improve in further imporvement of the code.
