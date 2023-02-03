@@ -211,7 +211,7 @@ def turn_left(left):
 Figure below shows the buttons control interface.
 
 <p align="center">
-  <img width="500" height="800" src="https://user-images.githubusercontent.com/80621864/154955314-6963db8c-23d2-49e4-811a-2452e962a76c.jpg">
+  <img width="500" height="500" src="https://user-images.githubusercontent.com/80621864/154955314-6963db8c-23d2-49e4-811a-2452e962a76c.jpg">
 </p>
 
 
