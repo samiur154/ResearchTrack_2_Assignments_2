@@ -108,10 +108,106 @@ from ipywidgets import Button, Layout, ButtonStyle, GridBox, VBox, HBox ,Box ,Ap
 import ipywidgets as widgets
 ```
 
+#### Buttons Control ####
+Buttons to control the holomonic robot in the gazebo environment
+six buttons are provided in this block to manually control the robot. The buttons are used to define robot;s direction and it is publishing to the topic /cmd_vel.
 
+A start button used to trigger the "go_to_point" random movement of the robot and a stop button is provided to set all the robot velocities to zero. The buttons are implement using a service client that send a "start"/"stop" string to the "Command" service.
+Also,there are forward,backward,right and left buttons which are used to move the robot in a required direction.
 
-### Start,Stop,foreward,backward,left,right buttons ###
+```
+start  = Button(description='Start',layout=Layout(width='auto', align="center", grid_area='Start'),style=ButtonStyle(button_color='green'))
+stop  = Button(description='Stop',layout=Layout(width='auto', grid_area='Stop'),style=ButtonStyle(button_color='red'))
+forward  = Button(description='Forward',layout=Layout(width='auto', align="center", grid_area='W'),style=ButtonStyle(button_color='cyan'))
+left  = Button(description='Left',layout=Layout(width='auto', grid_area='left'),style=ButtonStyle(button_color='cyan'))
+right = Button(description='Right',layout=Layout(width='auto', grid_area='right'),style=ButtonStyle(button_color='cyan'))
+backward = Button(description='Backward',layout=Layout(width='auto', grid_area='backward'),style=ButtonStyle(button_color='cyan'))
+output = widgets.Output()
+```
+
+#### Start,Stop,foreward,backward,left,right buttons ####
 The robot may be manually started and stopped with this button, and it can also be moved in any direction using the forward, backward, left, and right buttons. These buttons provide as a means of requesting customer service.
+
+#### Funcion of buttons ####
+
+```
+def start_robot(start):
+    global random_moving,task_time,ui_client
+    with output:
+        setting_linear = 1.0
+        setting_angular = 1.0
+    ui_client("start")
+    random_moving=True
+    task_time=rospy.Time.now()
+    print('Start is been activated and robot is moving')
+        
+
+def stop_robot(stop):
+    global random_moving,cancelled_targets
+    with output:
+        ui_client("stop")
+        if random_moving == False:
+            print("I was already stopped")
+        random_moving = False 
+        cancelled_targets=cancelled_targets+1
+        task_time=0
+        print('Stop is activated and robot will be stopped')
+        
+def move_forward(forward):
+    global random_moving, setting_linear, setting_linear,cancelled_targets
+    if random_moving == True:
+        ui_client("stop")
+        task_time=0
+        cancelled_targets=cancelled_targets+1
+    else:   
+        random_moving = False
+        msg.linear.x = setting_linear
+        msg.angular.z = 0.0
+        pub.publish(msg)
+        print("Robot will go straight after the command") 
+ 
+ def move_backward(backward):
+    global random_moving, setting_linear, setting_angular,cancelled_targets
+    if random_moving == True:
+        ui_client("stop")
+        task_time=0
+        cancelled_targets=cancelled_targets+1
+    else:
+        random_moving = False
+        msg.linear.x = -setting_linear
+        msg.angular.z = setting_angular
+        setting_linear = msg.linear.x 
+        setting_angular = msg.angular.z 
+        pub.publish(msg)
+        print("Robot will go backward after the command")
+        
+def turn_right(right):
+    global random_moving, setting_linear, setting_angular,cancelled_targets
+    if random_moving == True:
+        ui_client("stop")
+        cancelled_targets=cancelled_targets+1
+        task_time=0
+    else:
+        random_moving = False
+        msg.linear.x = setting_linear
+        msg.angular.z = setting_angular
+        pub.publish(msg)
+        print("Robot will go right-side after the command")
+        
+def turn_left(left):
+    global random_moving, setting_linear, setting_angular,cancelled_targets
+    if random_moving == True:
+        ui_client("stop")
+        cancelled_targets=cancelled_targets+1
+        task_time=0
+    else:
+        random_moving = False
+        msg.linear.x = setting_linear
+        msg.angular.z = -setting_angular
+        pub.publish(msg)
+        print("Robot will go left-side after the command")
+   ```
+  
 
 ![but_jupy](https://user-images.githubusercontent.com/80621864/154955314-6963db8c-23d2-49e4-811a-2452e962a76c.jpg)
 
