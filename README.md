@@ -222,10 +222,186 @@ It is a live plot that displays the robot's condition in real time. It is an x, 
   <img width="700" height="400" src="https://user-images.githubusercontent.com/80621864/154955780-9474e2e9-7205-48a8-a9d6-31f4c7c4ab6a.jpg">
 </p>
 
-### Velocity visualization plot ###
-This figure makes it easier to see how the **cmd_vel** compares to the **odom(actual velocity)**. Both in linear and angular positions, it is visible.  against the 
+### Robot's Position Visualization ###
+This cell will display the robot postion in the gazebo environment.robot's position is visualized using a black diamond shaped dots.the robot position is obtained by subscribing to /Odometry topic.
 
-![Screenshot 2022-02-21 114438](https://user-images.githubusercontent.com/80621864/154956187-c5c24725-6045-499d-8544-8cb020882c2d.jpg) ![Screenshot 2022-02-21 114414](https://user-images.githubusercontent.com/80621864/154957806-3044a32b-0ba2-490a-8863-b9f7fdbf1c4c.jpg) ![Screenshot 2022-02-21 114343](https://user-images.githubusercontent.com/80621864/154956251-a9522580-93a5-4e4a-8cb1-444f4b790fdc.jpg) ![vel_jupy](https://user-images.githubusercontent.com/80621864/154956271-f240dbb2-2922-44da-ba1d-ef6c77697306.jpg)
+```
+#plot for robot postion
+fig_robot_position, ax_robot_position = plot.subplots()
+ax_robot_position.set_xlim(( -15, 15))
+ax_robot_position.set_ylim((-15, 15))
+plot.xlabel("X axis")
+plot.ylabel("Y axis")
+plot.title("Robot moving positon")
+
+line, = ax_robot_position.plot([], [], 'kd', markersize="6")
+
+pos_x_data =  collections.deque(maxlen=300)
+pos_y_data = collections.deque(maxlen=300)
+
+
+def init():
+    line.set_data([], [])
+    return (line,)
+    
+def pos_animate(i):
+    line.set_data(pos_x_data, pos_y_data)
+    return (line)
+
+def odometry_cb(msg):
+    pos_y_data.append(msg.pose.pose.position.y)
+    pos_x_data.append(msg.pose.pose.position.x) 
+      
+                  
+# Read robot odometry
+jr.subscribe('/odom', Odometry, odometry_cb)
+
+
+anim_robot_pos = animation.FuncAnimation(fig_robot_position, pos_animate, init_func=init, blit=True)
+plot.grid(b=True,color='r')
+```
+
+### Velocity visualization plot ###
+Four line plots which will show the linear and angular velocity from cmd_vel message with respect to the actual angular and linear velocity from odom messages.
+
+```
+fig_linear_cmd_velocity,ax_linear_cmd_velocity=plot.subplots()
+ax_linear_cmd_velocity.set_xlim(20, 0)
+ax_linear_cmd_velocity.set_ylim(-1, 6)
+
+fig_linear_actual_velocity,ax_linear_actual_velocity=plot.subplots()
+ax_linear_actual_velocity.set_xlim(20, 0)
+ax_linear_actual_velocity.set_ylim(-1, 6)
+
+fig_angular_cmd_velocity,ax_angular_cmd_velocity=plot.subplots()
+ax_angular_cmd_velocity.set_xlim(20, 0)
+ax_angular_cmd_velocity.set_ylim(-1, 6)
+
+fig_angular_actual_velocity,ax_angular_actual_velocity=plot.subplots()
+ax_angular_actual_velocity.set_xlim(20, 0)
+ax_angular_actual_velocity.set_ylim(-1, 6)
+
+
+    # linear velocity
+linear_cmd, = ax_linear_cmd_velocity.plot([], [], 'og', markersize='5')
+linear_actual, = ax_linear_actual_velocity.plot([], [], 'ok', markersize='5')
+    # angular velocity
+angular_cmd, = ax_angular_cmd_velocity.plot([], [], 'oc', markersize='5')
+angular_actual, = ax_angular_actual_velocity.plot([], [], 'om', markersize='5')
+
+time_vect = collections.deque(maxlen=400)
+vel_target = collections.deque(maxlen=400)
+vel_current = collections.deque(maxlen=400)
+angular_target = collections.deque(maxlen=400)
+angular_current = collections.deque(maxlen=400)
+```
+
+#### Functions used for visualization of velocity #### 
+
+```
+def init_graph():
+    # linear velocity lines
+    linear_cmd.set_data([], [])
+    linear_actual.set_data([], [])    
+    # angular velocity lines
+    angular_cmd.set_data([], [])
+    angular_actual.set_data([], [])
+    ax_linear_cmd_velocity.set_ylim(-5,5)
+    ax_linear_actual_velocity.set_ylim(-5,5)
+    ax_angular_cmd_velocity.set_ylim(-5,5)
+    ax_angular_actual_velocity.set_ylim(-5,5)
+    
+    #return (line_vel_current, line_vel_target, ang_vel_current, ang_vel_target,)  
+    return (linear_cmd, angular_cmd, linear_actual, angular_actual)
+def animate_vel(i):   
+    ax_linear_cmd_velocity.legend()
+    ax_linear_cmd_velocity.set_title("cmd_vel linear velocity")
+    ax_linear_cmd_velocity.set(xlabel='Time', ylabel='Linear velocity')
+    ax_linear_cmd_velocity.set_xlabel('time')
+    
+    ax_linear_actual_velocity.legend()
+    ax_linear_actual_velocity.set_title("odom linear velocity")
+    ax_linear_actual_velocity.set(xlabel='Time', ylabel='Linear velocity')
+    ax_linear_actual_velocity.set_xlabel('time')
+    
+    ax_angular_cmd_velocity.legend()
+    ax_angular_cmd_velocity.set_title("cmd_vel angular velocity")
+    ax_angular_cmd_velocity.set(xlabel='Time', ylabel='Angular velocity')
+    ax_angular_cmd_velocity.set_xlabel('time')
+    
+    ax_angular_actual_velocity.legend()
+    ax_angular_actual_velocity.set_title("odom angular velocity")
+    ax_angular_actual_velocity.set(xlabel='Time', ylabel='Angular velocity')
+    ax_angular_actual_velocity.set_xlabel('time')
+    
+    # linear velocity lines
+    linear_cmd.set_data(time_vect, vel_target)   
+    linear_actual.set_data(time_vect, vel_current)  
+    # angular velocity lines
+    angular_cmd.set_data(time_vect, angular_target) 
+    angular_actual.set_data(time_vect, angular_current) 
+    
+    return (linear_cmd, angular_cmd, linear_actual, angular_actual)
+    
+    def vel_callback(msg_cmd):   
+    
+    time_vect.append(rospy.get_time())       
+    vel_target.append(msg_cmd.linear.x)  
+    angular_target.append(msg_cmd.angular.z)  
+    x_min = max([0, max(time_vect) - 20]) 
+    x_max = max([100, max(time_vect)])
+    ax_linear_cmd_velocity.set_xlim( x_min, x_max )
+    ax_linear_actual_velocity.set_xlim( x_min, x_max )
+    ax_angular_cmd_velocity.set_xlim( x_min, x_max )
+    ax_angular_actual_velocity.set_xlim( x_min, x_max )
+    
+    
+def odom_speed_callback(msg_odom):       
+    vel_current.append(msg_odom.twist.twist.linear.x) 
+    angular_current.append(-1.85*msg_odom.twist.twist.angular.z)
+
+# Read robot velocity(cmd_vel)
+jr.subscribe('cmd_vel', Twist, vel_callback)
+# Read robot odometry(odom)
+jr.subscribe('odom', Odometry, odom_speed_callback)
+
+# Animation function for velocity check
+
+anim_linear_cmd_velocity= animation.FuncAnimation(fig_linear_cmd_velocity, animate_vel, init_func=init_graph, frames=100, interval=20,
+blit=True)
+
+anim_angular_cmd_velocity= animation.FuncAnimation(fig_angular_cmd_velocity, animate_vel, init_func=init_graph, frames=100, interval=20,
+blit=True)
+anim_linear_actual_velocity= animation.FuncAnimation(fig_linear_actual_velocity, animate_vel, init_func=init_graph, frames=100, interval=20,
+blit=True)
+
+anim_angular_actual_velocity= animation.FuncAnimation(fig_angular_actual_velocity, animate_vel, init_func=init_graph, frames=100, interval=20,
+blit=True)
+ ```
+Below figure shows the **odom angular velocity** visualization.
+
+<p align="center">
+  <img width="700" height="400" src="https://user-images.githubusercontent.com/80621864/154956187-c5c24725-6045-499d-8544-8cb020882c2d.jpg">
+</p>
+
+Below figure shows the **cmd_vel angular velocity** visualization.
+
+<p align="center">
+  <img width="700" height="400" src="https://user-images.githubusercontent.com/80621864/154957806-3044a32b-0ba2-490a-8863-b9f7fdbf1c4c.jpg">
+</p>
+
+Below figure shows the **odom linear velocity** visualization.
+
+<p align="center">
+  <img width="700" height="400" src="https://user-images.githubusercontent.com/80621864/154956251-a9522580-93a5-4e4a-8cb1-444f4b790fdc.jpg">
+</p>
+
+Below figure shows the **cmd_vel linear velocity** visualization.
+
+<p align="center">
+  <img width="700" height="400" src="https://user-images.githubusercontent.com/80621864/154956271-f240dbb2-2922-44da-ba1d-ef6c77697306.jp">
+</p>
+
 
 ### Bar plot ###
 Bar plot is used for showing the number of target reached and the number of target that as cancelled by the user.
