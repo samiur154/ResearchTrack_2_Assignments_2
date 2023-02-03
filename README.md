@@ -393,7 +393,7 @@ Below figure shows the **cmd_vel angular velocity** visualization.
 Below figure shows the **odom linear velocity** visualization.
 
 <p align="center">
-  <img width="700" height="400" src="https://user-images.githubusercontent.com/80621864/154956251-a9522580-93a5-4e4a-8cb1-444f4b790fdc.jpg">
+  <img width="700" height="400" src="https://github.com/samiur154/ResearchTrack_2_Assignments_2/blob/769eb64879aae8badd7a66f7f71a3c1980543a92/cmd_vel%20linear%20velocity.jpeg">
 </p>
 
 Below figure shows the **cmd_vel linear velocity** visualization.
