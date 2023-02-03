@@ -3,6 +3,10 @@ Course Instructor: [Prof. CARMINE RECCHIUTO](https://rubrica.unige.it/personale/
 
 ## GUI for Robot Control using JupyterNotebook 
 
+## Abstract ##
+[Jupyter Notebook](https://jupyter.org/) is an open source web application which is used to create and share documents that contain real-time code, equation, data visualizations, text, and so on. This Jupyetr Nootebook is designed to create the GUI for Mobile Robot Control. Also, this notebook is developed as an user interface. For this, ***Jupyter Notebook*** tool is used.
+
+
 ## Jupyter notebook package
 This package includes Jupyter Notebooks, which act as a user interface node and assist in controlling the robot in the gazebo environment. This node will have a graphical interface with a Jupyter notebook for starting and stopping the robot, controlling the robot in the desired direction, and also analyzing various plots. In the action package, the user interface is simply a command line interface through which the user can "start" or "stop" the robot.
 
