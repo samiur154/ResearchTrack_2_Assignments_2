@@ -211,13 +211,16 @@ def turn_left(left):
 Figure below shows the buttons control interface.
 
 <p align="center">
-  <img width="400" height="400" src="https://user-images.githubusercontent.com/80621864/154955314-6963db8c-23d2-49e4-811a-2452e962a76c.jpg">
+  <img width="500" height="400" src="https://user-images.githubusercontent.com/80621864/154955314-6963db8c-23d2-49e4-811a-2452e962a76c.jpg">
 </p>
 
 
 ### Robot's moving position in real time ###
 It is a live plot that displays the robot's condition in real time. It is an x, y plot that is used to indicate the robot's position as well as the direction it is travelling in the gazebo environment. Robot motion will be shown by a black line that looks like a diamond.
-![map_jupy](https://user-images.githubusercontent.com/80621864/154955780-9474e2e9-7205-48a8-a9d6-31f4c7c4ab6a.jpg)
+
+<p align="center">
+  <img width="500" height="400" src="https://user-images.githubusercontent.com/80621864/154955780-9474e2e9-7205-48a8-a9d6-31f4c7c4ab6a.jpg">
+</p>
 
 ### Velocity visualization plot ###
 This figure makes it easier to see how the **cmd_vel** compares to the **odom(actual velocity)**. Both in linear and angular positions, it is visible.  against the 
