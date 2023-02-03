@@ -219,7 +219,7 @@ Figure below shows the buttons control interface.
 It is a live plot that displays the robot's condition in real time. It is an x, y plot that is used to indicate the robot's position as well as the direction it is travelling in the gazebo environment. Robot motion will be shown by a black line that looks like a diamond.
 
 <p align="center">
-  <img width="700" height="400" src="https://user-images.githubusercontent.com/80621864/154955780-9474e2e9-7205-48a8-a9d6-31f4c7c4ab6a.jpg">
+  <img width="700" height="400" src="https://user-images.githubusercontent.com/80621864/154956271-f240dbb2-2922-44da-ba1d-ef6c77697306.jpg">
 </p>
 
 ### Robot's Position Visualization ###
