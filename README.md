@@ -218,10 +218,6 @@ Figure below shows the buttons control interface.
 ### Robot's moving position in real time ###
 It is a live plot that displays the robot's condition in real time. It is an x, y plot that is used to indicate the robot's position as well as the direction it is travelling in the gazebo environment. Robot motion will be shown by a black line that looks like a diamond.
 
-<p align="center">
-  <img width="700" height="400" src="https://user-images.githubusercontent.com/80621864/154956271-f240dbb2-2922-44da-ba1d-ef6c77697306.jpg">
-</p>
-
 ### Robot's Position Visualization ###
 This cell will display the robot postion in the gazebo environment.robot's position is visualized using a black diamond shaped dots.the robot position is obtained by subscribing to /Odometry topic.
 
@@ -399,9 +395,8 @@ Below figure shows the **odom linear velocity** visualization.
 Below figure shows the **cmd_vel linear velocity** visualization.
 
 <p align="center">
-  <img width="700" height="400" src="https://user-images.githubusercontent.com/80621864/154956271-f240dbb2-2922-44da-ba1d-ef6c77697306.jp">
+  <img width="700" height="400" src="https://user-images.githubusercontent.com/80621864/154956271-f240dbb2-2922-44da-ba1d-ef6c77697306.jpg">
 </p>
-
 
 ### Bar plot ###
 Bar plot is used for showing the number of target reached and the number of target that as cancelled by the user.
