@@ -182,3 +182,29 @@ User Interface, detailed about the user interface node.
 <p align="center">
   <img width="700" height="500" src="https://github.com/samiur154/ResearchTrack_2_Assignments_2/blob/da1ed534550e15821a3216f0c45b3326972d3481/user_interface.png">
 </p>
+
+Figure above shows the HTML page about the *user_interface script*.
+
+## GitHub Page ##
+
+Finally, update your documentation online on **GitHub**, so that it could be visualized by people using repository.
+
+Use GitHub to publish your doucmentation online. For this, follow the steps given below:
+
+* Create a folder **docs**, containing documentation.
+
+***Note:*** To add files in the *docs* folder, copy the ***html*** & ***latex*** folder drom ***_build*** folder. After that, copy all the files from html & latex folder and delete the empty folder.
+
+* In case of Sphinx documentation, add an empty file, in the docs folder, named **".nojekyll"** (this is needed for using
+the sphinx layout).
+* Lastly, go to Settings of ***GitHub repository*** (for which you creayed documentation and need to create website link for the same) -> ***Pages***.
+* On Pages section, make changes under GitHub Pages -> Branch. Change *branch* from none to ***main***, and */root* folder to ***/docs***. Finally, save the settings and activate an *url* which may be used to visualize the documentation.
+
+## Final Outcome
+
+To view the documentation visit the link given below: 
+
+https://samiur154.github.io/ResearchTrack_2_Assignments_2/#module-scripts.go_to_point
+
+This the *url* for the Sphinx Documentaion of the Robot Control. 
+
