@@ -172,7 +172,7 @@ Now, the generated *HTML* files, inside *_build/html* folder, chevk the detailed
 Desired Position, detailed about the desired_position node. 
 
 <p align="center">
-  <img width="1000" height="300" src="https://github.com/samiur154/ResearchTrack_2_Assignments_2/blob/da1ed534550e15821a3216f0c45b3326972d3481/desired_position.png">
+  <img width="800" height="500" src="https://github.com/samiur154/ResearchTrack_2_Assignments_2/blob/da1ed534550e15821a3216f0c45b3326972d3481/desired_position.png">
 </p>
  
 Figure above shows the HTML page about the *desired_position script*.
@@ -180,5 +180,5 @@ Figure above shows the HTML page about the *desired_position script*.
 User Interface, detailed about the user interface node.
 
 <p align="center">
-  <img width="1000" height="860" src="https://github.com/samiur154/ResearchTrack_2_Assignments_2/blob/da1ed534550e15821a3216f0c45b3326972d3481/user_interface.png">
+  <img width="700" height="500" src="https://github.com/samiur154/ResearchTrack_2_Assignments_2/blob/da1ed534550e15821a3216f0c45b3326972d3481/user_interface.png">
 </p>
