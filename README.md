@@ -55,11 +55,6 @@ Figure above shows that *Separate source and build directories (y/n) [n]: n*.
 
 **Step 3:** After entering the required details, now choose the language in which documentation to be prepared. 
 
-<p align="center">
-  <img width="1000" height="260" src="https://github.com/samiur154/ResearchTrack_2_Assignments_2/blob/c09d92b07536971eb3f9cb57c6f8c37cf84683e7/s3.png">
-</p>
-
-Figure above shows the language choosen for Documentation.
 
 ## Documentation Preparation
 
